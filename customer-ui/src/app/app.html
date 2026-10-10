@@ -1,0 +1,107 @@
+
+<main class="container">
+  <header class="page-header">
+    <h1>Customer Management</h1>
+    <p>Manage customer records using Angular, FastAPI, and PostgreSQL.</p>
+  </header>
+
+  <section class="panel">
+    <h2>{{ editingId === null ? 'Add Customer' : 'Edit Customer' }}</h2>
+
+    <form (ngSubmit)="saveCustomer()" #customerForm="ngForm">
+      <div class="form-grid">
+        <label>
+          Name *
+          <input name="name" [(ngModel)]="form.name" required />
+        </label>
+
+        <label>
+          Address Line 1 *
+          <input name="address_line1" [(ngModel)]="form.address_line1" required />
+        </label>
+
+        <label>
+          Address Line 2
+          <input name="address_line2" [(ngModel)]="form.address_line2" />
+        </label>
+
+        <label>
+          City *
+          <input name="city" [(ngModel)]="form.city" required />
+        </label>
+
+        <label>
+          State *
+          <input name="state" [(ngModel)]="form.state" required />
+        </label>
+
+        <label>
+          ZIP Code *
+          <input name="zip" [(ngModel)]="form.zip" required />
+        </label>
+      </div>
+
+      <div class="actions">
+        <button type="submit" [disabled]="customerForm.invalid || loading">
+          {{ editingId === null ? 'Add Customer' : 'Save Changes' }}
+        </button>
+
+        <button type="button" class="secondary" (click)="clearForm()">
+          Clear / Cancel
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <section class="panel">
+    <div class="list-heading">
+      <h2>Customer List</h2>
+      <button type="button" class="secondary" (click)="loadCustomers()">
+        Refresh
+      </button>
+    </div>
+
+    <p *ngIf="loading">Loading customers...</p>
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>ZIP</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let customer of customers">
+            <td>{{ customer.customer_id }}</td>
+            <td>{{ customer.name }}</td>
+            <td>
+              {{ customer.address_line1 }}
+              {{ customer.address_line2 || '' }}
+            </td>
+            <td>{{ customer.city }}</td>
+            <td>{{ customer.state }}</td>
+            <td>{{ customer.zip }}</td>
+            <td class="row-actions">
+              <button type="button" class="secondary"
+                (click)="editCustomer(customer)">Edit</button>
+              <button type="button" class="danger"
+                (click)="deleteCustomer(customer.customer_id)">Delete</button>
+            </td>
+          </tr>
+
+          <tr *ngIf="!loading && customers.length === 0">
+            <td colspan="7">No customers found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>

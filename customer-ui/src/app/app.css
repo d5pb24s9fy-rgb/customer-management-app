@@ -1,0 +1,383 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+  color: #243247;
+  background: #f3f6fb;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+:host,
+:host * {
+  box-sizing: border-box;
+}
+
+/* Page layout */
+
+.container {
+  width: calc(100% - 48px);
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 36px 0 56px;
+}
+
+/* Page title */
+
+header {
+  display: block;
+  margin: 0 0 28px;
+}
+
+header h1 {
+  margin: 0 0 8px;
+  color: #254675;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 15px;
+}
+
+/* White content cards */
+
+.panel {
+  display: block;
+  width: 100%;
+  margin: 0 0 28px;
+  padding: 26px;
+  overflow: visible;
+  background: #ffffff;
+  border: 1px solid #e1e8f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(35, 55, 80, 0.06);
+}
+
+.panel h2 {
+  margin: 0 0 22px;
+  color: #294b78;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/* Customer input form */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 20px;
+  width: 100%;
+}
+
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  color: #344963;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/*
+  Explicit input styling ensures that browser defaults
+  or global input rules do not make fields invisible.
+*/
+
+.form-grid input,
+.form-grid input[type="text"],
+.form-grid input:not([type]) {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  position: static;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 10px 12px;
+
+  color: #202938;
+  -webkit-text-fill-color: #202938;
+  background-color: #ffffff;
+
+  border: 1px solid #b9c6d6;
+  border-radius: 6px;
+  outline: none;
+  box-shadow: none;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: normal;
+
+  opacity: 1;
+  visibility: visible;
+  cursor: text;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-grid input:hover {
+  border-color: #8298b3;
+  background-color: #ffffff;
+}
+
+.form-grid input:focus {
+  border-color: #2563eb;
+  background-color: #ffffff;
+  outline: 2px solid rgba(37, 99, 235, 0.16);
+  outline-offset: 1px;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+.form-grid input:disabled {
+  color: #64748b;
+  background-color: #edf1f6;
+  cursor: not-allowed;
+}
+
+.form-grid input::placeholder {
+  color: #8b98aa;
+  opacity: 1;
+}
+
+/* Form buttons */
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 25px 0 0;
+}
+
+.container button {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  margin: 0;
+  padding: 9px 16px;
+
+  color: #ffffff;
+  background-color: #2563eb;
+  border: 1px solid #2563eb;
+  border-radius: 6px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  white-space: nowrap;
+
+  cursor: pointer;
+  opacity: 1;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.container button:hover:not(:disabled) {
+  color: #ffffff;
+  background-color: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.container button:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.25);
+  outline-offset: 2px;
+}
+
+.container button:disabled {
+  color: #ffffff;
+  background-color: #93b4ef;
+  border-color: #93b4ef;
+  opacity: 0.85;
+  cursor: not-allowed;
+}
+
+/* Secondary buttons */
+
+.container button.secondary {
+  color: #31577f;
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+}
+
+.container button.secondary:hover:not(:disabled) {
+  color: #254675;
+  background-color: #edf4fc;
+  border-color: #9eb2cb;
+}
+
+/* Delete buttons */
+
+.container button.danger {
+  color: #ffffff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.container button.danger:hover:not(:disabled) {
+  color: #ffffff;
+  background-color: #bb2635;
+  border-color: #bb2635;
+}
+
+/* Status messages */
+
+.container .success,
+.container .error {
+  display: block;
+  width: 100%;
+  margin: 0 0 18px;
+  padding: 12px 15px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.container .success {
+  color: #166534;
+  background-color: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.container .error {
+  color: #a32136;
+  background-color: #fff0f2;
+  border-color: #ffcbd3;
+}
+
+/* Customer list heading */
+
+.list-heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 0 18px;
+}
+
+.list-heading h2 {
+  margin: 0;
+}
+
+.list-heading button {
+  flex-shrink: 0;
+}
+
+/* Customer table */
+
+.table-wrap {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: 6px;
+}
+
+.container table {
+  width: 100%;
+  min-width: 760px;
+  margin: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: #ffffff;
+  text-align: left;
+}
+
+.container thead {
+  background-color: #f1f5fa;
+}
+
+.container th {
+  padding: 14px 12px;
+  color: #405570;
+  background-color: #f1f5fa;
+  border-bottom: 2px solid #dce5ef;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.container td {
+  padding: 14px 12px;
+  color: #46566d;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5eaf1;
+  font-size: 14px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.container tbody tr:hover td {
+  background-color: #f7faff;
+}
+
+.container tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Edit and delete actions inside the table */
+
+.row-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.row-actions button {
+  min-height: 34px;
+  padding: 6px 11px;
+  font-size: 13px;
+}
+
+/* Responsive layout */
+
+@media (max-width: 700px) {
+  .container {
+    width: calc(100% - 28px);
+    padding-top: 24px;
+  }
+
+  header h1 {
+    font-size: 27px;
+  }
+
+  .panel {
+    padding: 18px;
+    margin-bottom: 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 17px;
+  }
+
+  .list-heading {
+    align-items: flex-start;
+  }
+
+  .container th,
+  .container td {
+    padding: 11px 9px;
+  }
+}
